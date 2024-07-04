@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Details</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg" />
+  </head>
+  <body>
+    <div class="formcontainer">
+      <nav>
+        <button onclick="navigateTo('main.html')">Home</button>
+        <button onclick="logout()">Logout</button>
+        <button onclick="deleteStudent()">Delete</button>
+      </nav>
+      <h2>Student Details</h2>
+      <input type="text" id="name" placeholder="Name" />
+      <input type="text" id="department" placeholder="Department" />
+      <input type="text" id="class" placeholder="Class" />
+      <input type="text" id="division" placeholder="Division" />
+      <input type="text" id="wordPower" placeholder="Word Power" />
+      <input type="text" id="grammar" placeholder="Grammar" />
+      <input
+        type="text"
+        id="writtenCommunication"
+        placeholder="Written Communication"
+      />
+      <input type="text" id="nonVerbal" placeholder="Non-Verbal" />
+      <input
+        type="text"
+        id="presentationSkills"
+        placeholder="Presentation Skills"
+      />
+      <input type="text" id="groupDiscussion" placeholder="Group Discussion" />
+      <input type="text" id="interviewSkills" placeholder="Interview Skills" />
+      <input
+        type="text"
+        id="quantitativeAptitude"
+        placeholder="Quantitative Aptitude"
+      />
+      <input
+        type="text"
+        id="technicalAptitude"
+        placeholder="Technical Aptitude"
+      />
+
+      <button onclick="saveStudent()">Save</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="student.js"></script>
+  </body>
+</html>
