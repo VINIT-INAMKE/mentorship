@@ -1,5 +1,7 @@
+/* Global styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
@@ -12,21 +14,40 @@ body {
   );
   margin: 0;
   padding: 0;
+  min-height: 100vh; /* Ensures full height of viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(0, 0, 0);
 }
 
+/* Container for entire content */
 .container {
+  width: 300px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+.maincontainer {
   width: 95%;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   border-radius: 10px;
-  margin: 50px auto;
-
   padding: 20px;
   text-align: center;
 }
+
+/* Form container */
 .formcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 600px;
   background: rgba(255, 255, 255, 0.5);
@@ -35,10 +56,17 @@ body {
   -webkit-backdrop-filter: blur(3px);
   border-radius: 10px;
   margin: 50px auto;
-
   padding: 20px;
-  text-align: center;
+  overflow: auto; /* Enable scrolling */
+  color: white;
+  font-weight: 900;
 }
+label {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Navigation */
 nav {
   margin-bottom: 20px;
 }
@@ -57,21 +85,28 @@ nav button:hover {
   background-color: #45a049;
 }
 
+/* Heading */
 h2 {
   margin-bottom: 20px;
 }
 
+/* Form elements */
 input[type="email"],
 input[type="password"],
 input[type="text"],
-input[type="file"] {
-  width: 95%;
+textarea {
+  width: calc(100% - 20px);
   padding: 10px;
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
+textarea {
+  height: 100px; /* Adjust as needed */
+}
+
+/* Buttons */
 button {
   background-color: #4caf50;
   color: white;
@@ -86,29 +121,23 @@ button:hover {
   background-color: #45a049;
 }
 
-p {
-  margin: 15px 0;
-}
-
-p a {
-  color: #4caf50;
-}
-
+/* Student list */
 .student-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  justify-items: center;
 }
 
 .student-card {
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   border-radius: 5px;
-  margin: 10px;
   padding: 10px;
-  width: 200px;
+  width: 100%; /* Adjusted for grid layout */
+  max-width: 400px;
   text-align: center;
   cursor: pointer;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.596);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
@@ -129,4 +158,12 @@ p a {
 
 .student-card p {
   margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 400px) {
+  .container,
+  .formcontainer {
+    width: 90%;
+  }
 }

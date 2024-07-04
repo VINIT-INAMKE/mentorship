@@ -9,10 +9,6 @@ firebase.auth().onAuthStateChanged(function (user) {
           var card = document.createElement("div");
           card.className = "student-card";
 
-          //   var img = document.createElement("img");
-          //   img.src = student.imageURL || "default-image-url"; // Replace with a default image URL
-          //   img.alt = student.name;
-
           var name = document.createElement("h3");
           name.textContent = student.name;
 
@@ -25,7 +21,6 @@ firebase.auth().onAuthStateChanged(function (user) {
           var division = document.createElement("p");
           division.textContent = "Division: " + student.division;
 
-          //   card.appendChild(img);
           card.appendChild(name);
           card.appendChild(department);
           card.appendChild(studentClass);

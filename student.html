@@ -15,37 +15,66 @@
         <button onclick="deleteStudent()">Delete</button>
       </nav>
       <h2>Student Details</h2>
-      <input type="text" id="name" placeholder="Name" />
-      <input type="text" id="department" placeholder="Department" />
-      <input type="text" id="class" placeholder="Class" />
-      <input type="text" id="division" placeholder="Division" />
-      <input type="text" id="wordPower" placeholder="Word Power" />
-      <input type="text" id="grammar" placeholder="Grammar" />
-      <input
-        type="text"
-        id="writtenCommunication"
-        placeholder="Written Communication"
-      />
-      <input type="text" id="nonVerbal" placeholder="Non-Verbal" />
-      <input
-        type="text"
-        id="presentationSkills"
-        placeholder="Presentation Skills"
-      />
-      <input type="text" id="groupDiscussion" placeholder="Group Discussion" />
-      <input type="text" id="interviewSkills" placeholder="Interview Skills" />
-      <input
-        type="text"
-        id="quantitativeAptitude"
-        placeholder="Quantitative Aptitude"
-      />
-      <input
-        type="text"
-        id="technicalAptitude"
-        placeholder="Technical Aptitude"
-      />
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Name" />
 
-      <button onclick="saveStudent()">Save</button>
+        <label for="department">Department:</label>
+        <input type="text" id="department" placeholder="Department" />
+
+        <label for="class">Class:</label>
+        <input type="text" id="class" placeholder="Class" />
+
+        <label for="division">Division:</label>
+        <input type="text" id="division" placeholder="Division" />
+
+        <label for="wordPower">Word Power:</label>
+        <textarea id="wordPower" placeholder="Word Power"></textarea>
+
+        <label for="grammar">Grammar:</label>
+        <textarea id="grammar" placeholder="Grammar"></textarea>
+
+        <label for="writtenCommunication">Written Communication:</label>
+        <textarea
+          id="writtenCommunication"
+          placeholder="Written Communication"
+        ></textarea>
+
+        <label for="nonVerbal">Non-Verbal:</label>
+        <textarea id="nonVerbal" placeholder="Non-Verbal"></textarea>
+
+        <label for="presentationSkills">Presentation Skills:</label>
+        <textarea
+          id="presentationSkills"
+          placeholder="Presentation Skills"
+        ></textarea>
+
+        <label for="groupDiscussion">Group Discussion:</label>
+        <textarea
+          id="groupDiscussion"
+          placeholder="Group Discussion"
+        ></textarea>
+
+        <label for="interviewSkills">Interview Skills:</label>
+        <textarea
+          id="interviewSkills"
+          placeholder="Interview Skills"
+        ></textarea>
+
+        <label for="quantitativeAptitude">Quantitative Aptitude:</label>
+        <textarea
+          id="quantitativeAptitude"
+          placeholder="Quantitative Aptitude"
+        ></textarea>
+
+        <label for="technicalAptitude">Technical Aptitude:</label>
+        <textarea
+          id="technicalAptitude"
+          placeholder="Technical Aptitude"
+        ></textarea>
+
+        <button type="button" onclick="saveStudent()">Save</button>
+      </form>
     </div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
