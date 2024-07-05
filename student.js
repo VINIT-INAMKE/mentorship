@@ -20,7 +20,7 @@ const imagePond = FilePond.create(imageInputElement, {
   imageCropAspectRatio: "1:1",
   imageResizeTargetWidth: 0,
   imageResizeTargetHeight: 0,
-  stylePanelLayout: " circle",
+  stylePanelLayout: "circle",
   styleLoadIndicatorPosition: "center bottom",
   styleProgressIndicatorPosition: "right bottom",
   styleButtonRemoveItemPosition: "left bottom",
@@ -58,21 +58,15 @@ db.collection("students")
       document.getElementById("department").value = student.department;
       document.getElementById("class").value = student.class;
       document.getElementById("division").value = student.division;
-      document.getElementById("wordPower").value = student.wordPower;
-      document.getElementById("grammar").value = student.grammar;
-      document.getElementById("writtenCommunication").value =
-        student.writtenCommunication;
-      document.getElementById("nonVerbal").value = student.nonVerbal;
-      document.getElementById("presentationSkills").value =
-        student.presentationSkills;
-      document.getElementById("groupDiscussion").value =
-        student.groupDiscussion;
-      document.getElementById("interviewSkills").value =
-        student.interviewSkills;
-      document.getElementById("quantitativeAptitude").value =
-        student.quantitativeAptitude;
-      document.getElementById("technicalAptitude").value =
-        student.technicalAptitude;
+      document.getElementById("wordPower").value = "";
+      document.getElementById("grammar").value = "";
+      document.getElementById("writtenCommunication").value = "";
+      document.getElementById("nonVerbal").value = "";
+      document.getElementById("presentationSkills").value = "";
+      document.getElementById("groupDiscussion").value = "";
+      document.getElementById("interviewSkills").value = "";
+      document.getElementById("quantitativeAptitude").value = "";
+      document.getElementById("technicalAptitude").value = "";
     }
   });
 
@@ -134,27 +128,51 @@ function deleteStudent() {
 }
 
 function saveStudent() {
-  var studentData = {
-    name: document.getElementById("name").value,
-    department: document.getElementById("department").value,
-    class: document.getElementById("class").value,
-    division: document.getElementById("division").value,
-    wordPower: document.getElementById("wordPower").value,
-    grammar: document.getElementById("grammar").value,
-    writtenCommunication: document.getElementById("writtenCommunication").value,
-    nonVerbal: document.getElementById("nonVerbal").value,
-    presentationSkills: document.getElementById("presentationSkills").value,
-    groupDiscussion: document.getElementById("groupDiscussion").value,
-    interviewSkills: document.getElementById("interviewSkills").value,
-    quantitativeAptitude: document.getElementById("quantitativeAptitude").value,
-    technicalAptitude: document.getElementById("technicalAptitude").value,
-  };
-
   db.collection("students")
     .doc(studentId)
-    .set(studentData)
-    .then(() => {
-      alert("Student details saved!");
+    .get()
+    .then((doc) => {
+      var studentData = doc.exists ? doc.data() : {};
+      var now = new Date();
+      var formattedDate = `[${now.toLocaleDateString("en-GB")}]`;
+      var formattedTime = `[${now.toLocaleTimeString("en-US")}]`;
+
+      var updatedData = {
+        name: document.getElementById("name").value,
+        department: document.getElementById("department").value,
+        class: document.getElementById("class").value,
+        division: document.getElementById("division").value,
+      };
+
+      var fieldsToUpdate = [
+        { id: "wordPower", field: "wordPower" },
+        { id: "grammar", field: "grammar" },
+        { id: "writtenCommunication", field: "writtenCommunication" },
+        { id: "nonVerbal", field: "nonVerbal" },
+        { id: "presentationSkills", field: "presentationSkills" },
+        { id: "groupDiscussion", field: "groupDiscussion" },
+        { id: "interviewSkills", field: "interviewSkills" },
+        { id: "quantitativeAptitude", field: "quantitativeAptitude" },
+        { id: "technicalAptitude", field: "technicalAptitude" },
+      ];
+
+      fieldsToUpdate.forEach((item) => {
+        var value = document.getElementById(item.id).value;
+        if (value.trim() !== "") {
+          updatedData[item.field] =
+            (studentData[item.field] || "") +
+            `${formattedDate} ${formattedTime} ${value}\n`;
+        } else {
+          updatedData[item.field] = studentData[item.field] || "";
+        }
+      });
+
+      db.collection("students")
+        .doc(studentId)
+        .set(updatedData)
+        .then(() => {
+          alert("Student details saved!");
+        });
     });
 }
 

@@ -58,7 +58,7 @@ body {
   margin: 50px auto;
   padding: 20px;
   overflow: auto; /* Enable scrolling */
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 900;
 }
 
@@ -110,7 +110,7 @@ textarea {
 /* Buttons */
 button {
   background-color: #4caf50;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 10px 20px;
   margin: 10px 0;
   border: none;
@@ -254,11 +254,11 @@ button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .download-link {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
   font-size: 16px;
   margin-left: 10px;
@@ -282,4 +282,25 @@ button:hover {
 
 .folder-name:hover {
   text-decoration: underline;
+}
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
 }
