@@ -6,16 +6,32 @@
     <title>Student Details</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.svg" type="image/svg" />
+    <!-- FilePond styles -->
+    <link
+      href="https://unpkg.com/filepond/dist/filepond.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="formcontainer">
       <nav>
+        <button onclick="logout()">Logout</button>
+        <button onclick="navigateTo('documents.html')">Documents</button>
         <button onclick="navigateTo('main.html')">Home</button>
         <button onclick="logout()">Logout</button>
         <button onclick="deleteStudent()">Delete</button>
       </nav>
       <h2>Student Details</h2>
       <form>
+        <label for="image">Profile Image:</label>
+        <div class="profdiv">
+          <input type="file" id="image" accept="image/*" />
+        </div>
+
         <label for="name">Name:</label>
         <input type="text" id="name" placeholder="Name" />
 
@@ -30,52 +46,73 @@
 
         <label for="wordPower">Word Power:</label>
         <textarea id="wordPower" placeholder="Word Power"></textarea>
+        <input type="file" id="wordPowerFiles" multiple />
 
         <label for="grammar">Grammar:</label>
         <textarea id="grammar" placeholder="Grammar"></textarea>
+        <input type="file" id="grammarFiles" multiple />
 
         <label for="writtenCommunication">Written Communication:</label>
         <textarea
           id="writtenCommunication"
           placeholder="Written Communication"
         ></textarea>
+        <input type="file" id="writtenCommunicationFiles" multiple />
 
         <label for="nonVerbal">Non-Verbal:</label>
         <textarea id="nonVerbal" placeholder="Non-Verbal"></textarea>
+        <input type="file" id="nonVerbalFiles" multiple />
 
         <label for="presentationSkills">Presentation Skills:</label>
         <textarea
           id="presentationSkills"
           placeholder="Presentation Skills"
         ></textarea>
+        <input type="file" id="presentationSkillsFiles" multiple />
 
         <label for="groupDiscussion">Group Discussion:</label>
         <textarea
           id="groupDiscussion"
           placeholder="Group Discussion"
         ></textarea>
+        <input type="file" id="groupDiscussionFiles" multiple />
 
         <label for="interviewSkills">Interview Skills:</label>
         <textarea
           id="interviewSkills"
           placeholder="Interview Skills"
         ></textarea>
+        <input type="file" id="interviewSkillsFiles" multiple />
 
         <label for="quantitativeAptitude">Quantitative Aptitude:</label>
         <textarea
           id="quantitativeAptitude"
           placeholder="Quantitative Aptitude"
         ></textarea>
+        <input type="file" id="quantitativeAptitudeFiles" multiple />
 
         <label for="technicalAptitude">Technical Aptitude:</label>
         <textarea
           id="technicalAptitude"
           placeholder="Technical Aptitude"
         ></textarea>
+        <input type="file" id="technicalAptitudeFiles" multiple />
 
         <button type="button" onclick="saveStudent()">Save</button>
+        <button type="button" onclick="submitFiles()">Submit Files</button>
       </form>
     </div>
+    <!-- FilePond scripts -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-edit/dist/filepond-plugin-image-edit.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>

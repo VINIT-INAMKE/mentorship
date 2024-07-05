@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <link rel="icon" href="favicon.svg" type="image/svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="maincontainer">
+      <nav>
+        <button onclick="navigateTo('main.html')">Home</button>
+        <button onclick="logout()">Logout</button>
+      </nav>
+      <h1>Documents Page</h1>
+      <div id="navigation">
+        <button id="backButton" disabled>
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button id="refreshButton"><i class="fas fa-sync"></i></button>
+        <span id="currentPath">/</span>
+      </div>
+      <div id="fileList"></div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <script defer src="document.js"></script>
+  </body>
+</html>
