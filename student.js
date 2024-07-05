@@ -80,14 +80,55 @@ function deleteStudent() {
   if (confirm("Are you sure you want to delete this student?")) {
     db.collection("students")
       .doc(studentId)
-      .delete()
-      .then(() => {
-        alert("Student record deleted successfully!");
-        window.location.href = "main.html";
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          var student = doc.data();
+          var promises = [];
+
+          // Delete profile image
+          if (student.imageURL) {
+            var oldImageRef = storage.refFromURL(student.imageURL);
+            promises.push(oldImageRef.delete());
+          }
+
+          // Delete all documents
+          fields.forEach((field) => {
+            if (student[field] && Array.isArray(student[field])) {
+              student[field].forEach((url) => {
+                var fileRef = storage.refFromURL(url);
+                promises.push(fileRef.delete());
+              });
+            }
+          });
+
+          // Wait for all deletions to complete
+          Promise.all(promises)
+            .then(() => {
+              // Delete student record from Firestore
+              db.collection("students")
+                .doc(studentId)
+                .delete()
+                .then(() => {
+                  alert("Student record and files deleted successfully!");
+                  window.location.href = "main.html";
+                })
+                .catch((error) => {
+                  console.error("Error removing student: ", error);
+                  alert("Error: Failed to delete student record.");
+                });
+            })
+            .catch((error) => {
+              console.error("Error deleting files: ", error);
+              alert("Error: Failed to delete all associated files.");
+            });
+        } else {
+          alert("Student record not found.");
+        }
       })
       .catch((error) => {
-        console.error("Error removing student: ", error);
-        alert("Error: Failed to delete student record.");
+        console.error("Error fetching student data: ", error);
+        alert("Error: Failed to fetch student data.");
       });
   }
 }
